@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Dec 20 15:42:20 2016
+@author: Gowtham Mallikarjuna
+"""
 import os
 import pandas as pd
 #pd.set_option('display.max_columns', None) #dilplay all teh columns
