@@ -6,9 +6,10 @@ Created on Tue Dec 20 15:42:20 2016
 """
 import os
 import pandas as pd
-#pd.set_option('display.max_columns', None) #dilplay all teh columns
+#pd.set_option('display.max_columns', None) #dilplay all the columns
 #pd.set_option('display.max_rows', None) #dilplay all teh columns
 #pd.set_option('display.expand_frame_repr', None) #dilplay all teh columns
+#pd.set_option('display.max_colwidth',-1) # display full text in the column
 def main():
     # get location of script
     # This works only on command prompt. If working on any IDE, set current woking directory manually
