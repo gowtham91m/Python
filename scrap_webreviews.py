@@ -8,21 +8,51 @@ Created on Fri Jan 27 12:28:44 2017
 import os
 from bs4 import BeautifulSoup
 import urllib.request
+import random
+import time
+import requests
 
-#os.chdir('C:\\Users\\gmallik\\Downloads\\delete\\python\\scraping')
-url = 'https://www.amazon.com/Canon-Digital-Camera-Body-Black/product-reviews/B01BUYK04A/ref=cm_cr_arp_d_viewpnt_rgt?ie=UTF8&reviewerType=avp_only_reviews&filterByStar=critical&pageNumber=1'
-r = urllib.request.urlopen(url).read()
-soup = BeautifulSoup(r,'lxml')
+url = 'web_url'
+page = requests.get(url)
+page=page.text
+bs_page = BeautifulSoup(page,'lxml')
+li=bs_page.findAll('li','page-button')
+page=li[-1].text
+#print(page)
 
-text = soup.find_all("div",class_= "a-row review-data")
+text=[]
+for txt in bs_page.find_all('span','a-size-base review-text'): text.append(txt.text)
 
-review_text=''
-for i in text:
-    #print(i.text)
-    review_text+=' '+i.text
+for i in range(2,int(page)+1,1):
+    x=random.randrange(7,40)
+    time.sleep(x)
+    url=url[:-1]+str(i)
+    content = requests.get(url)
+    content = content.text
+    bs_content = BeautifulSoup(content,'lxml')
+    for txt in bs_content.find_all('span','a-size-base review-text'):text.append(txt.text)
+
+print(len(text))
 
 
-f = open('canon80d_cretical.txt','w+')
-f.write(review_text)
+'''
+import urllib2
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+response = opener.open(url)
+html_contents = response.read()
+'''
+
+l=len(text)
+f = open('review.txt','a')
+
+for i in range(len(text)):
+    print(i)
+    try:
+        f.write(text[i])
+        f.write('\n\n')
+    except Exception as e:
+        print(e)
+        continue
 f.close()
-#print(review_text)
+
