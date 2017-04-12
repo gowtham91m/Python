@@ -13,5 +13,4 @@ def view (df,table_name=None,topmost=True):
     main.title(table_name)
     f = Frame(main)
     f.pack(fill='both',expand=1)
-    pt = Table(f, dataframe=df, showstatusbar=True)
-    pt.show()
+    Table(f, dataframe=df, showstatusbar=True).show()
