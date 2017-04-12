@@ -1,5 +1,5 @@
-from tkinter import *
-from pandastable import Table# , TableModel
+from tkinter import Tk, Frame
+from pandastable import Table #, TableModel
 
 #View Pandas dataframe in new window
 #place this script in your python path directory
