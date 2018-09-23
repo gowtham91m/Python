@@ -1,4 +1,4 @@
-# Pythonit
+Some of my personal python scripts
 
 Viwe : Script to view pandas data frame in new window similar to "View" function in R.
 
